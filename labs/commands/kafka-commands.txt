@@ -63,8 +63,18 @@ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --grou
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --to-earliest --dry-run --group test-group --topic test
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --to-earliest --execute --group test-group --topic test
 
+#segment decoding
+bin/kafka-run-class.sh kafka.tools.DumpLogSegments --deep-iteration --print-data-log --files /bitnami/kafka/data/test-0/00000000000000000000.log
+
+#read transaction state data
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __transaction_state --from-beginning --formatter "kafka.coordinator.transaction.TransactionLog\$TransactionLogMessageFormatter" --property print.key=true --property print.value=true
+
+#read consumer offsets data
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --from-beginning --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" --property print.key=true --property print.value=true
+
 #kafka manager
 sudo sh ./kafka-manager
+sudo sh ./cmak
 
 #kafka connect
 bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties config/connect-file-sink.properties
