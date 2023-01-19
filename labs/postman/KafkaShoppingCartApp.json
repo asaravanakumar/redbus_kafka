@@ -1,0 +1,113 @@
+{
+	"variables": [],
+	"info": {
+		"name": "KafkaShoppingCartApp",
+		"_postman_id": "e5b0e6a1-0dae-4e5b-f4f4-6a3e710e1e3f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Products",
+			"request": {
+				"url": "http://localhost:8091/products",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"url": "http://localhost:8091/products",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"3\",\r\n\t\"name\":\"iPhone 13\",\r\n\t\"category\": \"Mobiles\",\r\n\t\"manufacturer\": \"Apple\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers",
+			"request": {
+				"url": "http://localhost:8092/customers",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer",
+			"request": {
+				"url": "http://localhost:8092/customers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Anil\",\r\n    \"age\":30,\r\n    \"gender\":\"Male\",\r\n    \"creditLimit\":10000,\r\n    \"address\":\"Marathahalli\",\r\n    \"location\":\"Bengaluru\",\r\n    \"prime\":true\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"request": {
+				"url": "http://localhost:8093/orders",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Orders",
+			"request": {
+				"url": "http://localhost:8093/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\":\"1\",\r\n    \"productId\":1,\r\n     \"quantity\":1,\r\n     \"price\":9000\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
