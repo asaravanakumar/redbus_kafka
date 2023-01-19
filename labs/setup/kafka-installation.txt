@@ -35,5 +35,9 @@ STEP 9: Start Kafka> bin/kafka-server-start.sh config/server.properties
 #Kafka Manager (docker image setup)
 docker pull hlebalbau/kafka-manager
 docker run -d -p 9000:9000 -e ZK_HOSTS="localhost:2181" hlebalbau/kafka-manager:stable -Dpidfile.path=/dev/null
+
+docker run -d --name kafka-manager -p 9000:9000 -e ZK_HOSTS="zookeeper:2181" -e KAFKA_MANAGER_USERNAME=admin -e KAFKA_MANAGER_PASSWORD=password deltaprojects/kafka-manager
+
+
 #Kafdrop
 docker run -d --rm -p 9000:9001 -e KAFKA_BROKERCONNECT=localhost:9092 -e JVM_OPTS="-Xms32M -Xmx64M" -e SERVER_SERVLET_CONTEXTPATH="/" obsidiandynamics/kafdrop
