@@ -31,6 +31,8 @@ STEP 8: Open another Console in Admin mode and Navigate to $KAFKA_HOME
 STEP 9: Start Kafka> bin/kafka-server-start.sh config/server.properties
 
 ====================================================================================
+#Kafka Docker Setup
+sudo docker-compose -f kafka-docker-compose.yml up -d
 
 #Kafka Manager (docker image setup)
 docker pull hlebalbau/kafka-manager
