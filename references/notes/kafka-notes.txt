@@ -1,0 +1,132 @@
+Communication Styles
+	Synchronous	- REST API
+	Asynchronous	- Messaging
+
+Messaging
+
+	Message Broker - RabbitMQ, ActiveMQ, ZeroMQ, Kafka
+
+	Queue  - Peer to Peer
+	Topic  - Pub Sub
+
+
+Kafka Introduction
+	- Distributed Streaming Platform
+	- Messaging | Storage | Stream Processing
+	
+	- Background
+		- Developed by Linkedin
+		- Open sourced in 2011
+		- Current version 3.2.2
+		- Developed in Scala
+		
+	- Kafka Features
+		- High Throughput
+		- Low Latency
+		- Scalability
+		- Distributed
+		- Reliability
+		- Security
+
+	- Kafka Concepts
+		- Topic			=> stream of records
+		- Partition		=> portion of topic divided based on some logic to scale the storage and improve parallelism 
+		- Offset 		=> uniquely identifies each record within the partition
+		- Leader		=> leader partition handles all read/write requests
+		- Follower		=> passively replicate the leader and follow the instructions
+		- Producer		=> publish data to the topics
+		- Consumer		=> consume the published data from the topic subscribed by the consumer group it belongs to
+		- ConsumerGroup		=> logical group of consumers to subscribe and process data published in a topic
+		
+		- Broker		=> component which provides messaging and storage capabilities
+		- Node			=> single physical server where broker runs
+		- Cluster		=> group of brokers
+		- Replication		=> duplication of partition for fault tolerance by given replication factor 		
+		
+		- Last Committed Offset		=> Offset of Consumed and Ack message
+		- Current Offset/Position 	=> Offset of Consumed and Not Ack messge
+		- High Watermark		=> Offset of last message Written and Replicated in all ISR
+		- Log End Offset		=> Offset of last message written on topic		
+
+Kafka Architecture
+	- Producers
+	- Consumers
+	- Brokers
+	- Zookeeper
+
+Kafka Concepts
+	- Topic
+	- Partition 
+	- Segments
+	- Offset
+	- Replication
+
+Kafka Setup
+
+Create Topic
+Produce Message
+Consume Message
+
+Consumer Group
+	- Min one consumer instance
+	- Max will be equal to no of partitions
+
+Producer Acks
+	0 -> No acks
+	1  -> Receives Ack once written to leader partition
+	-1 -> Receives Ack after written to all ISRs
+
+Producer API
+	1. Create KafkaProducer object
+	2. Supply Producer configuration
+	3. Created Producer Record
+	4. Send the message - Sync | Async
+	5. Close the Producer
+
+Consumer API
+	1. Create KafkaConsumer object
+	2. Supply Consumer configuration
+	3. Subscribe to topics | Assign Partitions
+	4. Poll the topic
+	5. Receive ConsumerRecords
+	6. Close the Consumer
+
+Delivery Semantics
+	- Atleast Once [possibility of duplicates]
+	- Atmost Once [possibility of data loss]
+	- Exactly Once
+		- Producer Idempotent
+		- Consumer Idempotent - Dedup
+
+Manual Partition Assignment
+
+Transactional Producer
+	- Assign Transactional ID
+	- Enable Idempotence
+
+	- InitTransactions
+	- BeginTransaction
+	- Publish Message
+	- CommitTransaction | AbortTransaction
+
+	- Isolation Level
+		- read_uncommitted
+		- read_committed 
+	
+
+Multi Broker cluster setup (on single node)
+
+Kafka Connector
+Kafka Streams
+
+Kafka Monitoring Tools
+	[Free Open Source]
+	- Kafka Manager => CMAK (Cluster Manager for Apache Kafka)
+	- KafDrop
+	- LinkedIn Burrow
+	- Kafka Tool
+	
+	[Commercial]
+	- Confluent Control Centre
+	- Lenses 
+	- Datadog Kafka Dashboard
